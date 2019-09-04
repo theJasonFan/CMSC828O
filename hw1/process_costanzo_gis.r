@@ -43,4 +43,4 @@ amat[is.na(amat)] <- 0
 # make the adjacency matrix diagonal
 amat <- ceiling(0.5 * (amat + t(amat)))
 
-write.table(amat, file='test.tsv', sep='\t', quote=FALSE)
+write.table(amat, file='data/output/costanzo_gis_adj.tsv', sep='\t', row.names=FALSE, quote=FALSE)

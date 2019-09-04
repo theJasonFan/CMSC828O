@@ -4,6 +4,16 @@ URL = 'http://thecellmap.org/costanzo2016/data_files/Raw%20genetic%20interaction
 output_dir = 'data'
 raw_zip = os.path.join(output_dir, 'raw/costanzo_supplement.zip')
 
+rule parse_gis:
+    input:
+        "data/output/Data File S2. Raw genetic interaction datasets: Matrix format/SGA_NxN_clustered.cdt"
+    output:
+        'data/output/costanzo_gis_adj.tsv'
+    shell:
+        '''
+        Rscript process_costanzo_gis.r
+        '''
+
 rule download:
     params:
         URL
@@ -24,5 +34,3 @@ rule unzip:
         unzip {input} -d {output}
         '''
 
-rule process_gis:
-    
